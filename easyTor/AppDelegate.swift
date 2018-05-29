@@ -11,14 +11,21 @@ import Cocoa
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
 
-    let statusItem = NSStatusBar.system.statusItem(withLength:NSStatusItem.squareLength)
+    let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.squareLength)
     var enableButton: NSMenuItem?
     var state: Bool = false
     let torController = TorController()
+    let iconSize = 16
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Insert code here to initialize your application
+        
         constructMenu()
+        
+        let icon = NSImage(named: NSImage.Name("AppIcon"))
+        icon?.isTemplate = true // best for dark mode
+        icon?.size = NSSize(width: self.iconSize, height: self.iconSize)
+        statusItem.image = icon
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
