@@ -12,6 +12,9 @@ import Cocoa
 class AppDelegate: NSObject, NSApplicationDelegate {
 
     let statusItem = NSStatusBar.system.statusItem(withLength:NSStatusItem.squareLength)
+    var enableButton: NSMenuItem?
+    var state: Bool = false
+    let torController = TorController()
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Insert code here to initialize your application
@@ -21,19 +24,25 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationWillTerminate(_ aNotification: Notification) {
         // Insert code here to tear down your application
     }
-
-    @objc func printQuote(_ sender: Any?) {
-        let quoteText = "Never put off until tomorrow what you can do the day after tomorrow."
-        let quoteAuthor = "Mark Twain"
-        
-        print("\(quoteText) — \(quoteAuthor)")
+    
+    @objc func setProxy(_ sender: Any?) {
+        if !self.state {
+            self.torController.enableProxy()
+            self.enableButton!.title = "Disable VPN"
+            self.state = true
+        } else {
+            self.torController.disableProxy()
+            self.enableButton!.title = "Enable VPN"
+            self.state = false
+        }
     }
     
     func constructMenu() {
         let menu = NSMenu()
-        
-        menu.addItem(NSMenuItem(title: "Enable VPN", action: #selector(AppDelegate.printQuote(_:)), keyEquivalent: ""))
-        
+        self.enableButton = NSMenuItem(title: "Enable VPN",
+                                       action: #selector(AppDelegate.setProxy(_:)),
+                                       keyEquivalent: "")
+        menu.addItem(self.enableButton!)
         statusItem.menu = menu
     }
     
