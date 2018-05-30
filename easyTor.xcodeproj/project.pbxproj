@@ -12,6 +12,7 @@
 		4F722CD120BB1D0F00FB360F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F722CD020BB1D0F00FB360F /* Assets.xcassets */; };
 		4F722CD420BB1D1000FB360F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F722CD220BB1D1000FB360F /* Main.storyboard */; };
 		4F722CDD20BB228300FB360F /* TorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F722CDC20BB228300FB360F /* TorController.swift */; };
+		4F9BE43720BF0A7C0090922D /* SwitchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F9BE43620BF0A7C0090922D /* SwitchViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +24,7 @@
 		4F722CD520BB1D1000FB360F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4F722CD620BB1D1000FB360F /* easyTor.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = easyTor.entitlements; sourceTree = "<group>"; };
 		4F722CDC20BB228300FB360F /* TorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TorController.swift; sourceTree = "<group>"; };
+		4F9BE43620BF0A7C0090922D /* SwitchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 			isa = PBXGroup;
 			children = (
 				4F722CCC20BB1D0F00FB360F /* AppDelegate.swift */,
+				4F9BE43620BF0A7C0090922D /* SwitchViewController.swift */,
 				4F722CDC20BB228300FB360F /* TorController.swift */,
 				4F722CCE20BB1D0F00FB360F /* ViewController.swift */,
 				4F722CD020BB1D0F00FB360F /* Assets.xcassets */,
@@ -144,6 +147,7 @@
 			files = (
 				4F722CDD20BB228300FB360F /* TorController.swift in Sources */,
 				4F722CCF20BB1D0F00FB360F /* ViewController.swift in Sources */,
+				4F9BE43720BF0A7C0090922D /* SwitchViewController.swift in Sources */,
 				4F722CCD20BB1D0F00FB360F /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -210,7 +214,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
@@ -261,7 +265,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
