@@ -8,82 +8,92 @@
 
 import Foundation
 
+enum shellError: Error {
+    case fail
+}
+
 class TorController {
-    let torProcess: Process? = nil
+    var torPID: Int?
+    let installBrewCommand = """
+                             /usr/bin/ruby -e $(curl -fsSL
+                             https://raw.githubusercontent.com/Homebrew/install/master/install)
+                             """
     
-    // launch new process with given arguments and return stdOut and stdErr output
-    private func exec(path: String, with args: [String]) -> (String, String) {
-        let task = Process()
-        
-        task.launchPath = path
-        task.arguments = args
-        
-        let errPipe = Pipe()
-        task.standardError = errPipe
-        let outPipe = Pipe()
-        task.standardOutput = outPipe
-        
-        task.launch()
-        
-        // Get the data
-        let outData = outPipe.fileHandleForReading.readDataToEndOfFile()
-        let out = String(decoding: outData, as: UTF8.self)
-        let errData = errPipe.fileHandleForReading.readDataToEndOfFile()
-        let err = String(decoding: errData, as: UTF8.self)
-        
-        return (out, err)
+    private func runShell(command: String) throws -> String? {
+        let script = "do shell script \"" + command + "\""
+        let appleScript = NSAppleScript(source: script)
+        var error: NSDictionary?
+        let output = appleScript?.executeAndReturnError(&error).stringValue
+        if error != nil {
+            print(error as Any)
+            throw shellError.fail
+        }
+        return output
     }
 
     // download Homebrew if it isn't installed already
     private func installHomebrew() {
-        let (_, error) = self.exec(path: "/usr/bin/env", with: ["brew"])
-        
-        if error.range(of: "brew: command not found") != nil {
-            print("Installing homebrew...")
-            let (_, _) = self.exec(path: "/usr/bin/ruby",
-                                   with: ["-e", "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"])
-            print("Homebrew is installed.")
-        } else {
+        do {
+            _ = try runShell(command: "/usr/local/bin/brew list")
             print("Homebrew is already installed.")
+        } catch {
+            print("Installing homebrew...")
+            do {
+                _ = try self.runShell(command: self.installBrewCommand)
+                print("Homebrew is installed.")
+            } catch {
+                print("Error during Homebrew installation")
+            }
         }
     }
 
     // download Tor if it isn't installed already
     private func installTor() {
-        let (_, error) = self.exec(path: "/usr/bin/env", with: ["brew", "list", "tor"])
-        
-        if error.range(of: "No such keg:") != nil {
-            print("Installing tor...")
-            let (_, _) = self.exec(path: "/usr/bin/env", with: ["brew", "install", "tor"])
-            print("Tor is installed.")
-        } else {
+        do {
+            let _ = try runShell(command: "/usr/local/bin/brew list tor")
             print("Tor is already installed.")
+        } catch {
+            print("Installing tor...")
+            do {
+                _ = try self.runShell(command: "/usr/local/bin/brew install tor")
+                print("Tor is installed.")
+            } catch {
+                print("Error during tor installation.")
+            }
         }
     }
     
     // install all dependencies if needed
-    private func prepareDevice() {
+    public func prepareDevice() {
         self.installHomebrew()
         self.installTor()
     }
 
     public func enableProxy() {
-        self.prepareDevice()
-        let (_, _) = self.exec(path: "/usr/bin/env", with: ["tor"])
-        print("Tor is launched.")
-
-        let script = "do shell script \"networksetup -setsocksfirewallproxy Wi-Fi 127.0.0.1 9050\""
-        let appleScript = NSAppleScript(source: script)
-        let _ = appleScript?.executeAndReturnError(nil)
-        print("Proxy is enabled.")
+        // launch tor in background
+        DispatchQueue.global(qos: .background).async {
+            if let output = try? self.runShell(command: "/usr/local/bin/tor > /dev/null 2>&1 & echo $!") {
+                // save process identificator to kill it later
+                self.torPID = Int(output!)
+                print("Tor is launched.")
+                
+                // update network settings to use tor
+                _ = try! self.runShell(command: "networksetup -setsocksfirewallproxy Wi-Fi 127.0.0.1 9050")
+                print("Proxy is enabled.")
+            }
+        }
     }
 
     public func disableProxy() {
-        let script = "do shell script \"networksetup -setsocksfirewallproxystate Wi-Fi off\""
-        let appleScript = NSAppleScript(source: script)
-        let _ = appleScript?.executeAndReturnError(nil)
+        // kill tor process
+        if self.torPID != nil {
+            _ = try? self.runShell(command: "kill \(self.torPID!)")
+        }
+        
+        // restore network settings
+        _ = try! self.runShell(command: "networksetup -setsocksfirewallproxystate Wi-Fi off")
+        
         print("Proxy is disabled.")
     }
 
 }
-

@@ -13,6 +13,7 @@
 		4F722CD420BB1D1000FB360F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F722CD220BB1D1000FB360F /* Main.storyboard */; };
 		4F722CDD20BB228300FB360F /* TorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F722CDC20BB228300FB360F /* TorController.swift */; };
 		4F9BE43720BF0A7C0090922D /* SwitchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F9BE43620BF0A7C0090922D /* SwitchViewController.swift */; };
+		4FF702C720BF198C007C4407 /* PrepareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF702C620BF198C007C4407 /* PrepareViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,7 @@
 		4F722CD620BB1D1000FB360F /* easyTor.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = easyTor.entitlements; sourceTree = "<group>"; };
 		4F722CDC20BB228300FB360F /* TorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TorController.swift; sourceTree = "<group>"; };
 		4F9BE43620BF0A7C0090922D /* SwitchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchViewController.swift; sourceTree = "<group>"; };
+		4FF702C620BF198C007C4407 /* PrepareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrepareViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,7 @@
 			isa = PBXGroup;
 			children = (
 				4F722CCC20BB1D0F00FB360F /* AppDelegate.swift */,
+				4FF702C620BF198C007C4407 /* PrepareViewController.swift */,
 				4F9BE43620BF0A7C0090922D /* SwitchViewController.swift */,
 				4F722CDC20BB228300FB360F /* TorController.swift */,
 				4F722CCE20BB1D0F00FB360F /* ViewController.swift */,
@@ -146,6 +149,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4F722CDD20BB228300FB360F /* TorController.swift in Sources */,
+				4FF702C720BF198C007C4407 /* PrepareViewController.swift in Sources */,
 				4F722CCF20BB1D0F00FB360F /* ViewController.swift in Sources */,
 				4F9BE43720BF0A7C0090922D /* SwitchViewController.swift in Sources */,
 				4F722CCD20BB1D0F00FB360F /* AppDelegate.swift in Sources */,

@@ -12,15 +12,18 @@ import Cocoa
 class AppDelegate: NSObject, NSApplicationDelegate {
 
     let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.squareLength)
+    var prepareViewController: PrepareViewController?
     var switchViewController: SwitchViewController?
-    var enableButton: NSMenuItem?
+
+    let enableButton = NSMenuItem()
     let torController = TorController()
     let iconSize = 16
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        // initialize switchViewController
+        // initialize view controllers
         let storyboard = NSStoryboard(name: NSStoryboard.Name(rawValue: "Main"), bundle: nil)
         self.switchViewController = storyboard.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "SwitchVC")) as? SwitchViewController
+        self.prepareViewController = storyboard.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "PrepareVC")) as? PrepareViewController
         
         // create menu
         constructMenu()
@@ -30,10 +33,23 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         icon?.isTemplate = true // best for dark mode
         icon?.size = NSSize(width: iconSize, height: iconSize)
         statusItem.image = icon
+        
+        // download dependencies if needed
+        DispatchQueue.global(qos: .background).async {
+            self.torController.prepareDevice()
+            DispatchQueue.main.async {
+                self.enableButton.view = self.switchViewController?.view
+            }
+        }
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
-        // Insert code here to tear down your application
+        // restore user network settings
+        self.torController.disableProxy()
+    }
+    
+    @objc private func exit() {
+        NSApplication.shared.terminate(self)
     }
     
     public func setProxy(toState state: NSControl.StateValue) {
@@ -44,13 +60,18 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
     }
     
-    func constructMenu() {
+    private func constructMenu() {
         let menu = NSMenu()
         
         // add menu item to turn on/off VPN
-        let switchButton = NSMenuItem()
-        switchButton.view = self.switchViewController?.view
-        menu.addItem(switchButton)
+        self.enableButton.view = self.prepareViewController?.view
+        menu.addItem(self.enableButton)
+        
+        menu.addItem(NSMenuItem.separator())
+        
+        // add quit button
+        let quitButton = NSMenuItem(title: "Quit", action: #selector(AppDelegate.exit), keyEquivalent: "q")
+        menu.addItem(quitButton)
         
         statusItem.menu = menu
     }

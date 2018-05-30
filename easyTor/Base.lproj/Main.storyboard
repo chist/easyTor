@@ -686,7 +686,7 @@
             <objects>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="SwitchVC" id="XfG-lQ-9wD" customClass="SwitchViewController" customModule="easyTor" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" wantsLayer="YES" id="m2S-Jp-Qdl" userLabel="switchView">
+                    <view key="view" wantsLayer="YES" id="m2S-Jp-Qdl">
                         <rect key="frame" x="0.0" y="0.0" width="115" height="35"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
@@ -718,6 +718,30 @@
                 </viewController>
             </objects>
             <point key="canvasLocation" x="63.5" y="223.5"/>
+        </scene>
+        <!--Prepare View Controller-->
+        <scene sceneID="4uD-hW-GTH">
+            <objects>
+                <viewController storyboardIdentifier="PrepareVC" id="I9S-1Z-9VR" userLabel="Prepare View Controller" customClass="PrepareViewController" customModule="easyTor" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="8OF-on-KZX">
+                        <rect key="frame" x="0.0" y="0.0" width="115" height="35"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2IG-vR-pBZ">
+                                <rect key="frame" x="5" y="9" width="105" height="17"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Loading extras..." id="F7g-u7-4e7">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                        </subviews>
+                    </view>
+                </viewController>
+                <customObject id="y2n-fX-Ba7" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="246" y="224"/>
         </scene>
     </scenes>
 </document>
