@@ -9,7 +9,7 @@
 import Foundation
 import Cocoa
 
-class SwitchViewController: ViewController {
+class SwitchViewController: NSViewController {
     let appDelegate = NSApplication.shared.delegate as! AppDelegate
     @IBOutlet weak var enableVPNCheckBox: NSButton!
     

@@ -9,6 +9,6 @@
 import Foundation
 import Cocoa
 
-class PrepareViewController: ViewController {
+class PrepareViewController: NSViewController {
     
 }

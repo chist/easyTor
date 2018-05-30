@@ -88,6 +88,7 @@ class TorController {
         // kill tor process
         if self.torPID != nil {
             _ = try? self.runShell(command: "kill \(self.torPID!)")
+            self.torPID = nil
         }
         
         // restore network settings
