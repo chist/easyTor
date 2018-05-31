@@ -29,14 +29,6 @@ class AboutViewController: NSViewController {
         self.linksLabel!.attributedStringValue = string
     }
     
-    override func viewDidAppear() {
-        super.viewDidAppear()
-        
-        // place app window into focus
-        self.view.window?.makeKey()
-        NSApp.activate(ignoringOtherApps: true)
-    }
-    
     private func getAppVersion() -> String {
         let dictionary = Bundle.main.infoDictionary!
         let version = dictionary["CFBundleShortVersionString"] as! String

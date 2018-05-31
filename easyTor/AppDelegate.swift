@@ -55,7 +55,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     @objc private func showAboutWindow() {
         if let controller = self.aboutWindowController {
+            // open window
             controller.showWindow(nil)
+            // move window to focus
+            NSApp.activate(ignoringOtherApps: true)
+            controller.window?.makeKeyAndOrderFront(self)
         }
     }
     
