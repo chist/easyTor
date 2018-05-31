@@ -842,9 +842,9 @@
                                 </textFieldCell>
                             </textField>
                             <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" preferredMaxLayoutWidth="163" translatesAutoresizingMaskIntoConstraints="NO" id="b4t-ID-ZQS">
-                                <rect key="frame" x="159" y="73" width="167" height="40"/>
+                                <rect key="frame" x="203" y="72" width="75" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="https://www.torproject.org https://brew.sh" id="sN4-ud-oTf">
+                                <textFieldCell key="cell" selectable="YES" sendsActionOnEndEditing="YES" alignment="left" title="Tor project Homebrew" id="sN4-ud-oTf">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -853,6 +853,7 @@
                         </subviews>
                     </view>
                     <connections>
+                        <outlet property="linksLabel" destination="b4t-ID-ZQS" id="oAN-sx-c4v"/>
                         <outlet property="versionLabel" destination="xQv-Va-QAH" id="me5-UF-e2K"/>
                     </connections>
                 </viewController>
