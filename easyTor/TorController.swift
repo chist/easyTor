@@ -86,10 +86,12 @@ class TorController {
         // launch tor in background
         DispatchQueue.global(qos: .background).async {
             if let output = try? self.runShell(command: "/usr/local/bin/tor > /dev/null 2>&1 & echo $!") {
-                // save process identificator to kill it later
-                self.torPID = Int(output!)
-
-                print("Proxy is enabled.")
+                DispatchQueue.main.async {
+                    // save process identificator to kill it later
+                    self.torPID = Int(output!)
+                    
+                    print("Proxy is enabled.")
+                }
             }
         }
     }
@@ -97,7 +99,7 @@ class TorController {
     public func disableProxy() {
         // kill tor process
         if self.torPID != nil {
-            _ = try? self.runShell(command: "kill \(self.torPID!)")
+            _ = try? self.runShell(command: "kill -9 \(self.torPID!)")
             self.torPID = nil
         }
         
