@@ -73,9 +73,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     public func setSupportedAppsOnly(state: NSControl.StateValue) {
         if state == NSControl.StateValue.on {
-            //
+            torController.setUpNetwork(state: false)
         } else {
-            //
+            torController.setUpNetwork(state: true)
         }
     }
     

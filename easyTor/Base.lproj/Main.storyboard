@@ -721,16 +721,19 @@
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oZg-Ge-xXh">
                                 <rect key="frame" x="20" y="2" width="175" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="check" title="Supported apps only" bezelStyle="regularSquare" imagePosition="right" enabled="NO" refusesFirstResponder="YES" inset="2" id="hTI-2t-Nma">
+                                <buttonCell key="cell" type="check" title="Supported apps only" bezelStyle="regularSquare" imagePosition="right" inset="2" id="hTI-2t-Nma">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system" size="14"/>
                                 </buttonCell>
                                 <connections>
-                                    <action selector="enableVPNCheckBoxPressed:" target="XfG-lQ-9wD" id="sTl-yZ-SP4"/>
+                                    <action selector="supportedAppsCheckBoxPressed:" target="U8a-e7-57Q" id="nSX-nT-8RW"/>
                                 </connections>
                             </button>
                         </subviews>
                     </view>
+                    <connections>
+                        <outlet property="supportedAppsCheckBox" destination="oZg-Ge-xXh" id="ll3-E7-ReL"/>
+                    </connections>
                 </viewController>
                 <customObject id="2e4-mr-EnX" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -819,7 +822,7 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="z98-so-w8T">
+                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" preferredMaxLayoutWidth="389" translatesAutoresizingMaskIntoConstraints="NO" id="z98-so-w8T">
                                 <rect key="frame" x="45" y="246" width="393" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="justified" title="easyTor is a simple utility allowing to transmit all your internet traffic through the tor network." id="Zpe-gf-6v1">
@@ -828,7 +831,7 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Tnd-vI-rIN">
+                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" preferredMaxLayoutWidth="389" translatesAutoresizingMaskIntoConstraints="NO" id="Tnd-vI-rIN">
                                 <rect key="frame" x="45" y="153" width="391" height="85"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="justified" id="NgR-me-4IQ">
@@ -838,10 +841,10 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JxO-U1-5WS">
-                                <rect key="frame" x="158" y="70" width="166" height="42"/>
+                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" preferredMaxLayoutWidth="163" translatesAutoresizingMaskIntoConstraints="NO" id="b4t-ID-ZQS">
+                                <rect key="frame" x="159" y="73" width="167" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="https://www.torproject.org https://brew.sh" allowsEditingTextAttributes="YES" id="7Sq-kK-cko">
+                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="https://www.torproject.org https://brew.sh" id="sN4-ud-oTf">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>

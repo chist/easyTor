@@ -13,11 +13,16 @@ enum shellError: Error {
 }
 
 class TorController {
-    var torPID: Int?
-    let installBrewCommand = """
+    private var torPID: Int?
+    private let installBrewCommand = """
                              /usr/bin/ruby -e $(curl -fsSL
                              https://raw.githubusercontent.com/Homebrew/install/master/install)
                              """
+    
+    init() {
+        // by default all traffic is transmited throught tor network
+        self.setUpNetwork(state: true)
+    }
     
     private func runShell(command: String) throws -> String? {
         let script = "do shell script \"" + command + "\""
@@ -69,16 +74,21 @@ class TorController {
         self.installTor()
     }
 
+    public func setUpNetwork(state: Bool) {
+        if state {
+            _ = try! self.runShell(command: "networksetup -setsocksfirewallproxy Wi-Fi 127.0.0.1 9050")
+        } else {
+            _ = try! self.runShell(command: "networksetup -setsocksfirewallproxystate Wi-Fi off")
+        }
+    }
+    
     public func enableProxy() {
         // launch tor in background
         DispatchQueue.global(qos: .background).async {
             if let output = try? self.runShell(command: "/usr/local/bin/tor > /dev/null 2>&1 & echo $!") {
                 // save process identificator to kill it later
                 self.torPID = Int(output!)
-                print("Tor is launched.")
-                
-                // update network settings to use tor
-                _ = try! self.runShell(command: "networksetup -setsocksfirewallproxy Wi-Fi 127.0.0.1 9050")
+
                 print("Proxy is enabled.")
             }
         }
@@ -92,8 +102,8 @@ class TorController {
         }
         
         // restore network settings
-        _ = try! self.runShell(command: "networksetup -setsocksfirewallproxystate Wi-Fi off")
-        
+        self.setUpNetwork(state: false)
+
         print("Proxy is disabled.")
     }
 
