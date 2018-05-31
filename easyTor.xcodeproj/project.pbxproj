@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4F06E4C920C0288C000313D8 /* SupportedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F06E4C820C0288C000313D8 /* SupportedViewController.swift */; };
+		4F38331C20C01C430003B195 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F38331B20C01C430003B195 /* AboutViewController.swift */; };
 		4F722CCD20BB1D0F00FB360F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F722CCC20BB1D0F00FB360F /* AppDelegate.swift */; };
 		4F722CD120BB1D0F00FB360F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F722CD020BB1D0F00FB360F /* Assets.xcassets */; };
 		4F722CD420BB1D1000FB360F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F722CD220BB1D1000FB360F /* Main.storyboard */; };
@@ -16,6 +18,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4F06E4C820C0288C000313D8 /* SupportedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportedViewController.swift; sourceTree = "<group>"; };
+		4F38331B20C01C430003B195 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		4F722CC920BB1D0F00FB360F /* easyTor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = easyTor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F722CCC20BB1D0F00FB360F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4F722CD020BB1D0F00FB360F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -58,8 +62,10 @@
 			isa = PBXGroup;
 			children = (
 				4F722CCC20BB1D0F00FB360F /* AppDelegate.swift */,
+				4F38331B20C01C430003B195 /* AboutViewController.swift */,
 				4FF702C620BF198C007C4407 /* PrepareViewController.swift */,
 				4F9BE43620BF0A7C0090922D /* SwitchViewController.swift */,
+				4F06E4C820C0288C000313D8 /* SupportedViewController.swift */,
 				4F722CDC20BB228300FB360F /* TorController.swift */,
 				4F722CD020BB1D0F00FB360F /* Assets.xcassets */,
 				4F722CD220BB1D1000FB360F /* Main.storyboard */,
@@ -148,6 +154,8 @@
 				4F722CDD20BB228300FB360F /* TorController.swift in Sources */,
 				4FF702C720BF198C007C4407 /* PrepareViewController.swift in Sources */,
 				4F9BE43720BF0A7C0090922D /* SwitchViewController.swift in Sources */,
+				4F06E4C920C0288C000313D8 /* SupportedViewController.swift in Sources */,
+				4F38331C20C01C430003B195 /* AboutViewController.swift in Sources */,
 				4F722CCD20BB1D0F00FB360F /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
