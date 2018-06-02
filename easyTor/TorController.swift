@@ -21,7 +21,7 @@ class TorController {
     
     init() {
         // by default all traffic is transmited throught tor network
-        self.setUpNetwork(state: true)
+        self.setUpNetwork(state: false)
     }
     
     private func runShell(command: String) throws -> String? {
